@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+<link href="~/Content/Cart.css" rel="stylesheet" />
+
+<div class="cart row">
+    <div class="col-8">
+        <table class="table-striped">
+            <tr>
+                <td>Tên</td>
+                <td>Giá</td>
+                <td>Số Lượng</td>
+                <td>Thành tiền</td>
+                <td></td>
+            </tr>
+            @foreach (var sp in Model)
+            {
+                <tr>
+                    <td>@sp.tenSP</td>
+                    <td>@sp.gia</td>
+                    <td>
+                        <input type="text" value="@sp.soLuongBan" />
+                    </td>
+                    <td></td>
+                    <td class="delete">
+                        @Html.ActionLink("Xoa", "DeleteCartItem", new { param1=sp.tenSP})
+                    </td>
+                </tr>
+            }
+        </table>
+        <h4 class="sum"></h4>
+    </div>
+    <div class="col-4 btns">
+        <button class="btn btn-primary">
+            @Html.ActionLink("Mua thêm", "Index")
+        </button>
+        <input type="button" class="btn btn-success" id="btnUpdate" value="Cập nhật" />
+        <button class="btn btn-danger">
+            @Html.ActionLink("Đặt hàng", "Order", new { param1 = 1, param2 = 1})
+        </button>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $("#btnUpdate").click(function () {
+            var itemlist = []
+            $("table tr:not(:first)").each(function () {
+                var tdlist = $(this).find("td");
+                var Item = { tenSP: $(tdlist[0]).html(), gia: $(tdlist[1]).html(), soLuongBan: $(tdlist[2]).find("input").val() };
+
+                itemlist.push(Item);
+            })
+
+            $.ajax({
+                url: "/Shops/UpdateCart/1/1",
+                dataType: "json",
+                data: JSON.stringify({ itemlist: itemlist }),
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    alert("success");
+                },
+                error: function (xhr) {
+                    alert("error");
+                }
+            });
+        })
+    })
+    $(function () {
+        var tong = 0;
+        $("table tr:not(:first)").each(function () {
+            var tdlist = $(this).find("td");
+            console.log($(tdlist[3]).html())
+            $(tdlist[3]).text($(tdlist[1]).html() * $(tdlist[2]).find("input").val())
+            tong += parseInt($(tdlist[3]).html())
+        })
+        $(".sum").html("Tổng tiền: "+tong+".000")
+    })
+</script>
+
+

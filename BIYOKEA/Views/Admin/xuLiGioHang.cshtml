@@ -1,0 +1,86 @@
+﻿@model IEnumerable<BIYOKEA.Models.GioHang>
+
+@{
+    ViewBag.Title = "xuLiGioHang";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+}
+
+<h2 style="text-align:center;color:red;">Xử Lí Giỏ Hàng</h2>
+
+
+<table class="table" style="margin-top:20px;">
+    <tr>
+        <th>
+            <h6>Mã hóa đơn</h6>
+        </th>
+        <th>
+            <h6>Mã người dùng</h6>
+        </th>
+        <th>
+            <h6>Mã Sản Phẩm</h6>
+        </th>
+        <th>
+            <h6>Tên người dùng</h6>
+        </th>
+        <th>
+            <h6>Địa Chỉ</h6>
+        </th>
+        <th>
+            <h6>Số lượng đặt</h6>
+        </th>
+        <th>
+            <h6>Trạng Thái</h6>
+        </th>
+        <th>
+            <h6>Ngày đặt</h6>
+        </th>
+        <th>
+            <h6>Xử lý</h6>
+        </th>
+        <th>
+            <h6>Xem Chi Tiết </h6>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.maHD)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maND)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.maSP)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tenND)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.diaChi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.soLuongBan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.trangThai)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ngayTL)
+    </td>
+
+    <td>
+        @if (item.xacNhan == false)
+        {
+            @Html.ActionLink("Duyệt Đơn Hàng", "XuLiDonHang", new { id = item.maHD })
+        }
+
+    </td>
+    <td>
+        @Html.ActionLink("Xem", "XuLiDonHang", new { id = item.maHD })
+    </td>
+</tr>
+}
+
+</table>

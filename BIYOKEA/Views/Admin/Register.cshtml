@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    <link href="~/Content/Enroll.css" rel="stylesheet" />
+
+}
+
+
+
+    </body>
+<div id="dangki">
+    <div>
+        <h3><b>ĐĂNG KÍ TÀI KHOẢN</b> </h3>
+    </div>
+    <div>
+        <p>Điền thông tin đầy đủ vào ô bên dưới và tiến hành đăng ký để nhận ưu đãi tuyệt vời từ chúng tôi.</p>
+        <p>Nếu không nhận được được email kích hoạt vui lòng kiểm tra hộp thư rác, spam.</p>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div id="khung">
+            <br />
+            <div>
+                <span class="property">Tên người dùng:</span>
+                <input name="tenND" id="tenND" placeholder="nhập ten nguoi dung" />
+            </div>
+            <br />
+            <div>
+                <span class="property">Email:</span>
+                <input name="email" id="email" placeholder="nhập email" />
+            </div>
+            <br />
+            <div>
+                <span class="property">Nhập mật khẩu:</span>
+                <input type="password" name="matKhau" id="matKhau" placeholder="nhập mật khẩu" />
+
+            </div>
+            <br />
+            <div>
+                <span class="property">Nhập lại mật khẩu:</span>
+                <input type="password" name="nhapLaiMatKhau" id="nhapLaiMatKhau" placeholder="nhập lại mật khẩu" />
+            </div>
+            <br />
+            <div>
+                <span class="property">Số điện thoại:</span>
+                <input name="SDT" id="SDT" placeholder="nhập số điện thoại" />
+            </div>
+            <div>
+                <br />
+                <span class="property">Địa chỉ:</span>
+                <input name="diaChi" id="diaChi" placeholder="nhập địa chỉ" />
+            </div>
+            <div>
+                <span class="property">Nhập quyền sử dụng:</span>
+                <input name="quyen" id="quyen" placeholder="nhập quyền sử dụng" />
+            </div>
+
+            <div id="bt">
+                <input name="dangKi" value="Register" type="submit" id="dk" />
+                <h5 style="color:red;margin-left:10px;line-height:30px;"> @ViewData["Loi"]</h5>
+            </div>
+
+        </div>
+    }
+    <h3 style="margin-top:20px;"><b><a href="dangNhap" style="border: 1px solid black;text-decoration: none;;">ĐĂNG NHẬP</a></b></h3>
+</div>

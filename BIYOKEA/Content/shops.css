@@ -1,0 +1,56 @@
+﻿
+.shop-container{
+    width: 90%;
+    margin: 0 auto;
+}
+.loai{
+    height : 0;
+}
+.loai li {
+    display: none;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.on ul {
+    height: auto;
+}
+
+.on ul li{
+    display: block !important;
+}
+
+.items{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.item{
+    text-align: center;
+    padding: 10px;
+}
+
+.top li {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.top img{
+    width: 100%;
+    height: auto;
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.form p{
+    text-align: start;
+    height: 30px;
+    margin: 5px 0;
+}

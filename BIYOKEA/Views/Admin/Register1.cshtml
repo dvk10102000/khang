@@ -1,0 +1,72 @@
+﻿@model BIYOKEA.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Register1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div style="margin-left:400px;">
+    <h4>Thông Tin Người Dùng</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <span>Tên người dùng</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenND)
+        </dd>
+
+        <dt>
+            <span>Email</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            <span>Mật Khẩu</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matKhau)
+        </dd>
+
+        <dt>
+            <span>Số Điện thoại</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sdt)
+        </dd>
+
+        <dt>
+            <span>Địa chỉ</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diaChi)
+        </dd>
+
+        <dt>
+            <span>Quyền Truy cập</span>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.quyen)
+        </dd>
+
+    </dl>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Đăng nhập" class="btn btn-default" style="border:10px solid black;" />
+        </div>
+    </div>
+    <div style="padding-left:10px;">
+        @Html.ActionLink("Quay về trang đăng kí", "Register")
+    </div>
+</div>
+

@@ -1,0 +1,118 @@
+﻿@model BIYOKEA.Models.GioHang
+
+@{
+    ViewBag.Title = "XuLiDonHang";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+}
+
+@using (Html.BeginForm("XuLiDonHang","Admin", new { id = @Model.maHD }, FormMethod.Post))
+{
+    <div>
+        <div id="row1">
+            <div class="row11"><p>Mã đơn Hàng :@Model.maHD</p></div>
+            <div class="row11"><p>Mã khách hàng :@Model.maND</p></div>
+            <div class="row11"><p>Tên khách Hàng :@Model.tenND</p></div>
+            <div class="row11"><p>Ngày đặt :@Model.ngayTL</p></div>
+            
+        </div>
+        <div id="row2">
+            <div class="row11"><p>Mã sản Phẩm </p></div>
+            <div class="row11"><p>Hình ảnh </p></div>
+            <div class="row11"><p>Số Lượng đặt </p></div>
+            <div class="row11"><p>Đơn Giá </p></div>
+        </div>
+        <div id="row3">
+            <div class="row12"><p>@Model.maSP</p></div>
+            <div class="row12"><img src="@Model.photoURL" alt="" /></div>
+            <div class="row12"><p>@Model.soLuongBan</p></div>
+            <div class="row12"><p>@Model.gia</p></div>
+        </div>
+        <div id="row4">
+            <div class="row41"><p>Địa chỉ : @Model.diaChi</p></div>
+            <div class="row41"><p>Số Điện thoại người đặt hàng : @Model.sdt</p></div>
+        </div>
+    </div>
+
+    <div style="margin-top:30px;">
+        <input style="border:1px solid gray;margin-left:620px;" type="submit" value="Phê duyệt đơn hàng" />
+        <br />
+        <a href="@Url.Action("xuLiGioHang", "Admin")" style="margin-left:10px;color:red;">Quay lại giỏ hàng</a>
+    </div>
+}
+<div>
+    @if (ViewBag.Confirm == true)
+    {
+        <p>Duyệt hàng thành công</p>
+    }
+</div>
+
+
+
+
+
+
+<style>
+    #row1 {
+        display: flex;
+        width: 100%;
+        background-color: antiquewhite;
+        height: 45px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+    }
+
+    .row11 {
+        margin: auto;
+        height: 45px;
+        line-height: 45px;
+    }
+
+    #row2 {
+        display: flex;
+        width: 100%;
+        background-color: lightgray;
+        height: 45px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+    }
+
+    #row3 {
+        display: flex;
+        width: 100%;
+        background-color: antiquewhite;
+        height: 310px;
+        line-height: 310px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+    }
+
+    .row12 {
+        margin: auto;
+        line-height: 310px;
+    }
+
+    #row4 {
+        display: flex;
+        width: 100%;
+        background-color: lightgray;
+        height: 45px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 20px;
+    }
+
+    .row41 {
+        margin-left: 50px;
+        height: 45px;
+        line-height: 45px;
+    }
+
+    #bt {
+        background-color: antiquewhite;
+    }
+
+        #bt:hover {
+            background-color: gray;
+            color: white;
+        }
+</style>
+

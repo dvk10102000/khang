@@ -1,0 +1,73 @@
+﻿@using BIYOKEA.Models;
+@{
+    ViewBag.Title = "Order";
+}
+
+@{ 
+    var allSP = Model;
+}
+
+<div class="">
+
+    @using (Html.BeginForm())
+    {
+        <div class="row">
+            <div class="col-6 w-75 mx-auto text-center">
+                <h3>Thông tin người mua</h3>
+                @if (Session["nguoiDung"] != null)
+                {
+                    NguoiDung nd = Session["nguoiDung"] as NguoiDung;
+                    <p>@nd.tenND</p>
+                    <p>@nd.sdt</p>
+                    <p>@nd.diaChi</p>
+                }
+                else
+                {
+                    <p>Tên người mua:</p>
+                    <p>@Html.TextBox("tenND")</p>
+                    <p>Số điện thoại:</p>
+                    <p>@Html.TextBox("sdt")</p>
+                    <p>Địa chỉ nhận hàng:</p>
+                    <p>@Html.TextBox("diaChi")</p>
+                }
+            </div>
+            <div class="col-6 w-75 mx-auto">
+                <h3>Các sản phẩm đặt hàng</h3>
+                <table class="table-striped w-75 mb-5">
+                    <tr>
+                        <td>Tên sản phẩm</td>
+                        <td>Giá</td>
+                        <td>Số lượng</td>
+                        <td>Giá</td>
+                    </tr>
+                    @foreach (var sp in allSP)
+                    {
+                        <tr>
+                            <td>@sp.tenSP</td>
+                            <td>@sp.gia</td>
+                            <td>@sp.soLuongBan</td>
+                            <td></td>
+                        </tr>
+                    }
+                </table>
+                <p class="sum"></p>
+                <input class="btn btn-success" type="submit" value="Đặt hàng" />
+            </div>
+        </div>
+        }
+
+</div>
+
+<script>
+    $(function () {
+        var tong = 0;
+        $("table tr:not(:first)").each(function () {
+            var tdlist = $(this).find("td");
+            console.log($(tdlist[3]).html())
+            $(tdlist[3]).text($(tdlist[1]).html() * $(tdlist[2]).html())
+            tong += parseInt($(tdlist[3]).html());
+        })
+        $(".sum").html("Tổng tiền: " + tong +".000")
+    })
+</script>
+

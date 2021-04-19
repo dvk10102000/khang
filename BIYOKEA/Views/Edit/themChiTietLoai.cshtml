@@ -1,0 +1,62 @@
+﻿@model BIYOKEA.Models.CTloaiSP
+
+@{
+    ViewBag.Title = "themChiTietLoai";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+}
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <div style="height:60px;line-height:60px;display:flex;">
+
+        <div style="margin-left:50px;">
+            <a href="@Url.Action("create","Edit")">Sản phẩm</a>
+
+        </div>
+        <div style="margin-left:50px;">
+
+            <a href="@Url.Action("themLoai","Edit")">Loại sản phẩm</a>
+        </div>
+        <div style="margin-left:50px;">
+            <a href="@Url.Action("themChiTietLoai","Edit")">Chi tiết loại sản phẩm</a>
+
+        </div>
+    </div>
+    <h4>Thêm Chi tiết loại sản phẩm</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <h5 class="control-label col-md-2">Mã loại</h5>
+        <div class="col-md-10">
+            @Html.DropDownList("maLoai", null, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.maLoai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h5 class="control-label col-md-2">Tên chi tiết loại</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.tenCTloai, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tenCTloai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @if (ViewBag.ok == true)
+    {
+        <span class="control-label col-md-2">Thêm Thành công Chi Tiết Loại Sản Phẩm</span>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 8.5" name="DataClasses1">
+  <DataContextMoniker Name="/DataClasses1DataContext" />
+  <nestedChildShapes>
+    <classShape Id="915a80d8-28df-4186-b7be-0a8b21541b2b" absoluteBounds="3.5, 1.375, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/DataClasses1DataContext/CTloaiSP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcfd5419-d48a-4ce4-b323-80e884d88fc6" absoluteBounds="3.515, 1.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c8c6f97a-93a5-4787-900c-e05d6e8c9614" absoluteBounds="9, 1, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DataClasses1DataContext/HoaDon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="72793fa6-c553-42fa-9929-0b2cb9d2181e" absoluteBounds="9.015, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d551db25-3891-4715-a12c-f66e0199a7f9" absoluteBounds="0.75, 1.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/DataClasses1DataContext/LoaiSP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b9cc0d86-04a6-4465-89ac-c041cdc9f80b" absoluteBounds="0.765, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d8e8bac8-e1c3-4153-b66c-adc6cd7b3efe" absoluteBounds="6.25, 5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/DataClasses1DataContext/NguoiDung" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4e951b15-6f1f-45a0-b8d0-23a8189d86d9" absoluteBounds="6.265, 5.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0fffc9f-d7de-4121-bddc-6ce9eedd8672" absoluteBounds="6.25, 1, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/DataClasses1DataContext/SanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5292fe99-227e-47d9-9bf3-ecbdbaf30eed" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 2.09699625651042); (3.5 : 2.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/LoaiSP/LoaiSP_CTloaiSP" />
+      <nodes>
+        <classShapeMoniker Id="d551db25-3891-4715-a12c-f66e0199a7f9" />
+        <classShapeMoniker Id="915a80d8-28df-4186-b7be-0a8b21541b2b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 6.07774983723958); (10 : 6.07774983723958); (10 : 3.34780110677083)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/NguoiDung/NguoiDung_HoaDon" />
+      <nodes>
+        <classShapeMoniker Id="d8e8bac8-e1c3-4153-b66c-adc6cd7b3efe" />
+        <classShapeMoniker Id="c8c6f97a-93a5-4787-900c-e05d6e8c9614" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.25 : 2.17390055338542); (9 : 2.17390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/SanPham/SanPham_HoaDon" />
+      <nodes>
+        <classShapeMoniker Id="b0fffc9f-d7de-4121-bddc-6ce9eedd8672" />
+        <classShapeMoniker Id="c8c6f97a-93a5-4787-900c-e05d6e8c9614" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 2.06814697265625); (6.25 : 2.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/DataClasses1DataContext/CTloaiSP/CTloaiSP_SanPham" />
+      <nodes>
+        <classShapeMoniker Id="915a80d8-28df-4186-b7be-0a8b21541b2b" />
+        <classShapeMoniker Id="b0fffc9f-d7de-4121-bddc-6ce9eedd8672" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

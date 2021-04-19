@@ -1,0 +1,50 @@
+﻿@*@model IEnumerable<BIYOKEA.Models.SanPham>*@
+@using PagedList.Mvc;
+@using BIYOKEA.Models;
+@model PagedList.IPagedList<SanPham>
+
+@{
+    ViewBag.Title = "quanLi";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+}
+@*<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>*@
+<!--<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+    </div>-->
+<div class="grid-content">
+    @foreach (var item in Model)
+    {
+        <div class="hang">
+            <img src="@item.photoURL" alt="" />
+            <a style="text-decoration:none;font-size:20px;color:black;margin-left:100px;" href="@Url.Action("Xoa","Edit",item.maSP)">@item.tenSP</a>
+        </div>
+    }
+</div>
+
+<div class="dlink">
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("quanLi", new {  page = page }))
+ 
+</div>
+<style>
+    .grid-content {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-gap: 10px;
+        /*background-color: #2196F3;*/
+        padding: 10px;
+    }
+
+        .grid-container > div {
+           /* background-color: rgba(255, 255, 255, 0.8);*/
+            border: 1px solid black;
+            text-align: center;
+            
+        }
+</style>

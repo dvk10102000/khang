@@ -1,0 +1,18 @@
+﻿
+.spDetail{
+    width: 90%;
+    margin: 0 auto;
+}
+.sps{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.sps > div{
+    padding: 10px;
+}
+
+.sps img{
+    width: 100%;
+    height: auto;
+}

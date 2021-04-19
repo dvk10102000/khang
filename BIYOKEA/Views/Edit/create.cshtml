@@ -1,0 +1,136 @@
+﻿@model BIYOKEA.Models.SanPham
+
+
+@{
+    ViewBag.Title = "create";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+}
+@using (Html.BeginForm("create", "Edit", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Thêm Sẩn Phẩm</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <h5 class = "control-label col-md-2">Tên sản Phẩm</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.tenSP, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tenSP, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+       <h5 class = "control-label col-md-2">Mã chi tiết loại</h5>
+        <div class="col-md-10">
+            @Html.DropDownList("maCTloai", null, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.maCTloai, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <h5 class="control-label col-md-2">Ngày Thêm</h5>
+        <div class="col-md-10">
+            <input type="text" name="ngayThem" value="@ViewBag.date" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+       <h5 class = "control-label col-md-2">Ảnh Sản Phẩm</h5>
+        <div class="col-md-10">
+
+            <input type="file" name="file" id="file" style="width: 100%;" />
+            @Html.ValidationMessageFor(model => model.photoURL, "", new { @class = "text-danger" })
+            @if (ViewBag.Message == true)
+            {
+                <span>upload success</span>
+            }
+        </div>
+    </div>
+    <div class="form-group">
+      <h5 class = "control-label col-md-2">Số Lượng</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.soLuong, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.soLuong, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+      <h5 class = "control-label col-md-2">Giá</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.gia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.gia, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+    
+        <h5 class = "control-label col-md-2">Chi tiết sản phẩm</h5>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.chiTiet, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.chiTiet, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "editItem", "Admin")
+</div>
+
+
+@*@using BIYOKEA.Models;
+
+    @{
+        ViewBag.Title = "Sua";
+        Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+    }
+    @{SanPham sp = (SanPham)ViewBag.sp;}
+    @using (Html.BeginForm("Sua", "Edit", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <fieldset>
+            <h3 style="color:red;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:450px;">CẬP NHẬT SẢN PHẨM</h3>
+
+
+            <div style="margin-left:450px;">
+                <div>
+                    <h5 style="width:250px;">Mã sản phẩm</h5>
+                    <input type="text" name="maSP" value="@sp.maSP" />
+                </div>
+                <div>
+                    <h5 style="width:250px;">Tên sản phẩm</h5>
+                    <input type="text" name="ten" value="@sp.tenSP" />
+                </div>
+                <div>
+                    <h5 style="width:250px;">Ảnh sản phẩm</h5>
+                    <img src="@sp.photoURL" alt="" />
+                    <input type="file" name="file" id="file" />
+                </div>
+                <br />
+                <div>
+                    <h5 style="width:250px;">Giá sản phẩm</h5>
+                    <input type="text" name="gia" value="@sp.gia" />
+                </div>
+                <br />
+                <div>
+                    <h5 style="width:250px;">Số lượng    </h5>
+                    <input type="text" name="soLuong" value="@sp.soLuong" />
+                </div>
+
+                <br />
+                <br />
+                <div>
+                    <input type="submit" value="cập nhật" style="font-size:35px;" />
+                </div>
+            </div>
+        </fieldset>
+
+    }*@

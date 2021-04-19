@@ -1,0 +1,70 @@
+﻿@model BIYOKEA.Models.SanPham
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+}
+
+
+
+<div>
+
+    <table style="margin-left:30px;margin-top:20px;">
+        <tr>
+            <td style="width:150px;">
+                <h5>Mã sản phẩm</h5>
+            </td>
+           
+            <td style="width:100px;">
+                <h5>Giá</h5>
+            </td>
+          
+            <td style="width:350px;">
+                <h5>Hình ảnh</h5>
+            </td>
+           
+            <td style="width:150px;">
+                <h5>Số lượng</h5>
+            </td>
+           
+            <td>
+                <h5>Tên sản phẩm</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.maCTloai)
+            </td>
+          
+
+
+            <td>
+                @Html.DisplayFor(model => model.gia)
+            </td>
+
+
+            <td>
+                <img src="@Model.photoURL" alt="" />
+            </td>
+
+           
+
+            <td>
+                @Html.DisplayFor(model => model.soLuong)
+            </td>
+           
+
+
+            <td>
+                @Html.DisplayFor(model => model.tenSP)
+            </td>
+        </tr>
+    </table>
+</div>
+@using (Html.BeginForm())
+    {
+    <input type="submit" value="Xóa" style="margin-left:450px;margin-top:40px; width:100px;" />
+    }
+<p>
+    @Html.ActionLink("Back to List", "editItem", "Admin")
+</p>

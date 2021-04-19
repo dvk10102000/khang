@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "dangNhap";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/dangki.css" rel="stylesheet" />
+}
+
+</body>
+<div id="dangki" style="height:300px;">
+    <div>
+        <h3 style="margin-top:20px;"><b>ĐĂNG NHẬP TÀI KHOẢN</b> </h3>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <div id="khung" style="margin-top:50px;">
+            <div>
+                <span class="property">Tên Tài Khoản:</span>
+                <input name="tenTK" id="tenTK" placeholder="nhập tên tài khoản" />
+            </div>
+            <br />
+            <div>
+                <span class="property">Mật khẩu:</span>
+                <input name="matKhau" id="matKhau" placeholder="nhập mật khẩu" type="password" />
+            </div>
+            <div id="bt">
+                <input name="dangnhap" value="Đăng Nhập" type="submit" id="dn" style="width:150px;padding-left:10px;margin-top:20px;" />
+                <h5 style="color:red;margin-left:10px;line-height:30px;"></h5>
+            </div>
+
+        </div>
+    }
+<h4 style="color:red;margin-left:100px;margin-top:10px;"> @ViewData["Loi"]</h4>
+</div>
+

@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<link href="~/Content/trangChu.css" rel="stylesheet" />
+@{
+    var allCTloai = Model[0];
+    var allLoai = Model[1];
+    var allSP = Model[2];
+    var topSP = Model[3];
+    <div class="jumbotron">
+        <div class="topItems">
+            <h3>Top 5 sản phẩm được mua nhiều nhất</h3>
+            <div class="d-flex">
+                @foreach(var sp in topSP)
+                {
+                    <div>
+                        <img src="@sp.photoURL" />
+                        <p>@sp.tenSP</p>
+                        <p>@sp.gia</p>
+                    </div>
+                }
+            </div>
+        </div>
+        @foreach (var item in allLoai)
+        {
+            <div class="all d-flex">  
+            <div class="left">
+                <p>@item.tenLoai</p>
+                <ul>
+                    @foreach (var ctItem in allCTloai)
+                    {
+                        if (item.maLoai == ctItem.maLoai)
+                        {
+                            <li>@ctItem.tenCTloai</li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="right">
+                <ul class="nav nav-tabs">
+                    @foreach (var ctItem in allCTloai)
+                    {
+                        if (item.maLoai == ctItem.maLoai)
+                        {
+                        <li class="nav-item">
+                            @{
+                                string id = "a" + ctItem.maCTloai;
+                                <a class="nav-link" data-toggle="tab" href="#@id">@ctItem.tenCTloai</a>
+                            }
+                        </li>
+                        }
+                    }
+                </ul>
+                <div class="tab-content">
+                    @foreach (var ctItem in allCTloai)
+                    {
+                        if (item.maLoai == ctItem.maLoai)
+                        {
+                        string id = "a" + ctItem.maCTloai;
+                        <div id="@id" class="container tab-pane">
+                            <div class="items">
+                            @foreach (var sp in allSP)
+                            {
+                                if (sp.maCTloai == ctItem.maCTloai)
+                                {
+                                
+                                string link = "Shops/Index/"+ctItem.maCTloai+"/"+sp.maSP;
+                                <a href="@link">
+                                <div class="item">
+                                    <img src="@sp.photoURL" alt="" />
+                                    <h3>@sp.tenSP</h3>
+                                    <p>@sp.gia</p>
+                                </div>
+                                </a>
+                                }
+
+                            }
+                            </div>
+                        </div>
+                        }
+                    }
+                </div>
+            </div>
+           </div>
+        }
+    </div>
+    }
+
+<script>
+
+    const a = document.getElementsByClassName('nav')
+    const b = document.getElementsByClassName('tab-content')
+    for (var i = 0; i < a.length; i++) {
+        a[i].firstElementChild.firstElementChild.classList.add("active")
+    }
+    for (var j = 0; j < b.length; j++) {
+        b[j].firstElementChild.classList.add("active")
+    }
+</script>
+    

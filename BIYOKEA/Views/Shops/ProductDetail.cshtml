@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "ProductDetail";
+}
+@{ 
+    var sp = Model[0];
+    var allSP = Model[1];
+    var allSpMost = Model[2];
+}
+<link href="~/Content/productDetail.css" rel="stylesheet" />
+<div class="spDetail">
+    <div class="row">
+        <div class="col-4">
+            <img src="@sp.photoURL" />
+        </div>
+        <div class="col-4">
+            
+            <h3 class="text-uppercase text-success">@sp.tenSP</h3>
+            <h5>Giá: @sp.gia</h5>
+            <h5>@sp.chiTiet</h5>
+            <button class="btn btn-success" data-toggle="modal" data-target="#model">Đặt hàng</button>
+            <div class="modal" id="model">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p>Dat hang</p>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body row">
+                            <div class="col-6">
+                                <img style="width:100%" src="@sp.photoURL" />
+                            </div>
+                            <div class="col-6 form">
+                                <form action="/Shops/AddToCart/@sp.maSP" method="post">
+                                    <p>@sp.tenSP</p>
+                                    <p>Giá: @sp.gia</p>
+                                    <div class="d-flex">
+                                        <p>Số lượng mua: </p>
+                                        <input style="width:50px; height:25px" type="text" name="soLuongBan" value="1" />
+                                    </div>
+                                    <input style="margin-top:10px" class="btn btn-danger" type="submit" value="Thêm vào giỏ" />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <h4>Thương hiệu: BIYOKEA</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            @*<h5>Sản Phảm Bán Chạy</h5>
+            <ul class="top">
+                @{
+                    foreach (var item in allSpMost)
+                    {
+                        <li class="row">
+                            <div class="col-6">
+                                <img src="@item.photoURL" />
+                            </div>
+                            <div class="col-6">
+                                <p>@item.tenSP</p>
+                                <p>@item.gia</p>
+                            </div>
+                        </li>
+                    }
+                }
+            </ul>*@
+        </div>
+        <div class="col-8 sps">
+            @foreach (var item in allSP)
+            {
+                var i = "a" + item.maSP;
+                <div class="text-center">
+                    <img src="@item.photoURL" alt="Alternate Text" />
+                    <p class="text-uppercase">@item.tenSP</p>
+                    <p class="text-danger">@item.gia</p>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#@i">Đặt hàng</button>
+                    <div class="modal" id="@i">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p>Dat hang</p>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body row">
+                                    <div class="col-6">
+                                        <img style="width:100%" src="@item.photoURL" />
+                                    </div>
+                                    <div class="col-6 form">
+                                        <form action="/Shops/AddToCart/@item.maSP" method="post">
+                                            <p>@item.tenSP</p>
+                                            <p>Giá: @item.gia</p>
+                                            <div class="d-flex">
+                                                <p>Số lượng mua: </p>
+                                                <input style="width:50px; height:25px" type="text" name="soLuongBan" value="1" />
+                                            </div>
+                                            <input style="margin-top:10px" class="btn btn-danger" type="submit" value="Thêm vào giỏ" />
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

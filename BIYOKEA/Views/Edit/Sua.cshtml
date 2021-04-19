@@ -1,0 +1,43 @@
+﻿@using BIYOKEA.Models;
+@{
+    ViewBag.Title = "Sua";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+    SanPham sp = (SanPham)ViewBag.sp;
+    int id = sp.maSP;
+}
+@using (Html.BeginForm("Sua", "Edit", new { id = @sp.maSP }, FormMethod.Post, new { enctype = "multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+    <h3 style="color:red;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left:450px;">CẬP NHẬT SẢN PHẨM</h3>
+
+
+    <div style="margin-left:450px;">
+        <div>
+            <h5 style="width:250px;">Tên sản phẩm</h5>
+            <input type="text" name="ten" value="@sp.tenSP" />
+        </div>
+        <br />
+        <div>
+            <h5 style="width:250px;">Ảnh sản phẩm</h5>
+            <img src="@sp.photoURL" alt="" />
+            <input type="file" name="file" />
+        </div>
+        <br />
+        <div>
+            <h5 style="width:250px;">Giá sản phẩm</h5>
+            <input type="text" name="gia" value="@sp.gia" />
+        </div>
+        <br />
+        <div>
+            <h5 style="width:250px;">Số lượng    </h5>
+            <input type="text" name="soLuong" value="@sp.soLuong" />
+        </div>
+        <br />
+        <br />
+        <div>
+            <input type="submit" value="cập nhật" style="font-size:35px;" />
+        </div>
+
+    </div>
+}

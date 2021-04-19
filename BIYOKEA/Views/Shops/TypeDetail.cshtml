@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "TypeDetail";
+}
+
+<link href="~/Content/shops.css" rel="stylesheet" />
+
+@{
+    var allLoai = Model[1];
+    var allCTloai = Model[0];
+    var allSp = Model[2]; 
+    var maCTloai = Model[3];
+    var pageNum = Model[4];
+    var pages = Model[5];
+    var allSpMost = Model[6];
+    var sapXep = Model[7];
+
+    <div class="shop-container row">
+        <div class="col-3 left">
+            <div>
+                <h5>Danh Mục Sản Phẩm</h5>
+                @foreach (var loai in allLoai)
+                {
+                    <div class="drop">
+                        <div class="d-flex justify-content-between">
+                            @{
+                                string tenLoai = loai.tenLoai;
+                            }
+                            @Html.ActionLink(tenLoai, "Type", new { param1 = loai.maLoai })
+                            <i class="fas fa-sort-down"></i>
+                        </div>
+                        <ul class="loai">
+                            @foreach (var ctLoai in allCTloai)
+                            {
+                                if (loai.maLoai == ctLoai.maLoai)
+                                {
+
+                                    string tenCTloai = ctLoai.tenCTloai;
+
+                                    <li>
+                                        @Html.ActionLink(tenCTloai, "TypeDetail", new { param1 = @ctLoai.maCTloai })
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+            <div>
+                <h5>Sản Phảm Bán Chạy</h5>
+                @*<ul class="top">
+                    @{
+                        foreach (var sp in allSpMost)
+                        {
+                            <li class="row">
+                                <div class="col-6">
+                                    <img src="@sp.photoURL" />
+                                </div>
+                                <div class="col-6">
+                                    <p>@sp.tenSP</p>
+                                    <p>@sp.gia</p>
+                                </div>
+                            </li>
+                        }
+                    }
+                </ul>*@
+            </div>
+        </div>
+        <div class="col-lg-4 right">
+            <div>
+                <form action="~/Shops/TypeDetail/@maCTloai/@pageNum" method="post">
+                    <select name="sapXep">
+                        @if (sapXep == "Mới cập nhật" || sapXep == null)
+                        {
+                            <option selected>Mới cập nhật</option>
+                        }
+                        else
+                        {
+                            <option>Mới cập nhật</option>
+                        }
+                        @if (sapXep == "Giá tăng dần")
+                        {
+                            <option selected>Giá tăng dần</option>
+                        }
+                        else
+                        {
+                            <option>Giá tăng dần</option>
+                        }
+                        @if (sapXep == "Giá giảm dần")
+                        {
+                            <option selected>Giá giảm dần</option>
+                        }
+                        else
+                        {
+                            <option>Giá giảm dần</option>
+                        }
+
+
+                    </select>
+                    <input type="submit" value="Sắp xếp" />
+                </form>
+            </div>
+            <div class="items">
+                @foreach (var sp in allSp)
+                {
+                    var id = "a" + sp.maSP;
+                    <div class="item">
+                        <img src="@sp.photoURL" alt="Alternate Text" />
+                        <a href="/Shops/ProductDetail/@sp.maSP"><p>@sp.tenSP</p></a>
+                        <p>@sp.gia</p>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#@id">Đặt hàng</button>
+                        <div class="modal" id="@id">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <p>Dat hang</p>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body row">
+                                        <div class="col-6">
+                                            <img style="width:100%" src="@sp.photoURL" />
+                                        </div>
+                                        <div class="col-6 form">
+                                            <form action="/Shops/AddToCart/@sp.maSP" method="post">
+                                                <p>@sp.tenSP</p>
+                                                <p>Giá: @sp.gia</p>
+                                                <div class="d-flex">
+                                                    <p>Số lượng mua: </p>
+                                                    <input style="width:50px; height:25px" type="text" name="soLuongBan" value="1" />
+                                                </div>
+                                                <input style="margin-top:10px" class="btn btn-danger" type="submit" value="Thêm vào giỏ" />
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            @if (pages > 1)
+            {
+                <ul class="pagination">
+                    @for (int i = 1; i <= pages; i++)
+                    {
+                        var link = "Shops/TypeDetail/" + maCTloai + "/" + i;
+                        if (i == pageNum)
+                        {
+                            <li class="page-item active">
+                                <p class="page-link">
+                                    @Html.ActionLink(i + "", "TypeDetail", new { param1 = maCTloai, param2 = i, sapXep = @sapXep })
+                                </p>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                <p class="page-link">
+                                    @Html.ActionLink(i + "", "TypeDetail", new { param1 = maCTloai, param2 = i, sapXep = @sapXep })
+                                </p>
+                            </li>
+                        }
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+}
+
+<script>
+    const allDrop = document.getElementsByClassName("drop")
+    for (var i = 0; i < allDrop.length; i++) {
+        allDrop[i].firstElementChild.lastElementChild.addEventListener("click", (i) => {
+            console.log(i.target)
+            i.target.parentElement.parentElement.classList.toggle("on")
+        })
+    }
+</script>
+

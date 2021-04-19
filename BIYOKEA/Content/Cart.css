@@ -1,0 +1,39 @@
+﻿
+.cart{
+    width: 90%;
+    margin: auto;
+}
+
+table{
+    width: 90%;
+    margin: 50px 0;
+}
+
+tr{
+    height: 40px;
+}
+
+td{
+    font-size: 20px;
+    text-align: center;
+}
+
+td input{
+    width: 50px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+.btns{
+    margin: 50px 0;
+}
+
+.delete a{
+    color: tomato !important;
+}

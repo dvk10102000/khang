@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutQuanLi.cshtml";
+}
+<h2 style="text-align:center;color:red;margin-top:15px;">Thông Kê Các Thông Số Quan Trọng Của WebSite</h2>
+<div id="thongKe">
+    <div class="statictic o">
+        <div style="text-align: center;">
+            <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;height: 200px;line-height: 200px;">
+                Tổng Doanh Thu :<span style="color: red;">@ViewBag.doanhThu Đ</span>
+            </h4>
+
+        </div>
+
+
+    </div>
+    <div class="statictic o1">
+        <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;height: 200px;line-height: 200px;">
+           Số Tài Khoản Được Tạo :<span style="color: green;">@ViewBag.TongTaiKhoan</span>
+        </h4>
+
+    </div>
+
+
+    <div class="statictic o2">
+        <div style="text-align: center;">
+            <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;height: 200px;line-height: 200px;">
+                Số Người Đã Truy Cập :<span style="color: red;">@ViewBag.SoNguoiDaTruyCap</span></h4>
+            
+        </div>
+    </div>
+    <div class="statictic o3">
+        <div style="text-align: center;">
+            <h4 style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;height: 200px;line-height: 200px;">
+                Số Người Đang Online :<span style="color: red;">@ViewBag.SoNguoiDangTrucTuyen</span>
+            </h4>
+           
+        </div>
+        
+    </div>
+</div>
+<style>
+    #thongKe {
+        
+        display: flex;
+        width: 1500p;
+        margin-top:70px;
+    }
+
+    .statictic {
+        border-radius: 50%;
+        margin-left: 60px;
+        height: 200px;
+        width: 300px;
+        line-height: 200px;
+    }
+
+    .o {
+        background-color: aquamarine;
+    }
+
+    .o1 {
+        background-color: red;
+    }
+
+    .o2 {
+        background-color: gray;
+    }
+
+    .o3 {
+        background-color: green;
+    }
+</style>
+

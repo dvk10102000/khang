@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@{ 
+    var allSP = Model[0];
+    var theLoai = Model[2];
+    var item = Model[1];
+} 
+
+<link href="~/Content/Search.css" rel="stylesheet" />
+
+<div>
+    <form action="/Search" method="get" class="d-flex justify-content-around">
+        <div>
+            <p>Tu khoa</p>
+            <input type="text" name="ten" value="@item.ten" />
+        </div>
+        <div>
+            <p>Loai</p>
+            <select name="loai">
+                @{
+                    if (item.loai == "Tat ca")
+                    {
+                        <option selected>Tat ca</option>
+                    }
+                    else
+                    {
+                        <option>Tat ca</option>
+                    }
+                }
+            
+                @foreach (var i in theLoai)
+                {
+                    if (i == item.loai)
+                    {
+                        <option selected>@i</option>
+                    }
+                    else
+                    {
+                        <option>@i</option>
+                    }
+                }
+            </select>
+        </div>
+        <div>
+            <p>Gia tu</p>
+            <input type="text" name="from" value="@item.from" />
+        </div>
+        <div>
+            <p>Gia den</p>
+            <input type="text" name="to"  value="@item.to" />
+        </div>
+        <div>
+            <input type="submit" value="Tim" />
+        </div>
+    </form>
+    <div class="items">
+    @foreach(var sp in allSP)
+    {
+        <div class="item">
+            <img src="@sp.photoURL" />
+            <p>@sp.gia</p>
+            <p>@sp.tenSP</p>
+        </div>
+    }
+    </div>
+</div>
+
